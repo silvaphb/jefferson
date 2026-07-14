@@ -24,7 +24,7 @@ def new_book(request, book: BookIn):
     except Exception as error:
         return 404, {'Error': error}
 
-@api.delete('/remover_livro', response={200: dict, 404: dict})
+@api.delete('/remover_livro', response={200: dict, 404: dict, 500: dict})
 def delete_book(request, id: int):
     try:
         if not Book.objects.filter(id=id).exists():
@@ -34,9 +34,9 @@ def delete_book(request, id: int):
         book.delete()
         return 200, {'Success': True}
     except Exception as error:
-        return 404, {'Error': error}
+        return 500, {'Error': error}
 
-@api.patch('/atualizar_livro', response={200: BookOut, 404: dict})
+@api.patch('/atualizar_livro', response={200: BookOut, 404: dict, 500: dict})
 def update_book(request, id: int, book: BookUpdate):
     try:
         if not Book.objects.filter(id=id).exists():
@@ -50,4 +50,4 @@ def update_book(request, id: int, book: BookUpdate):
         return BookOut.from_domain(updated_book)
     
     except Exception as error:
-        return 404, {'Error': error}
+        return 500, {'Error': error}
