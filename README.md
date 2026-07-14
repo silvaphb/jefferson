@@ -4,7 +4,6 @@ Foco em trazer eficiência e facilidade nas bibliotecas de escolas. Tornando mai
 # Conexões
 **Get:**
 - `/api/livros`: Retorna a lista de livros em formato JSON.
--  `/api/livro/{id}`: Retorna determinado livro associado ao ID passado no link. Em caso de inexistência, retorna uma mensagem do erro.
 
 **Post:**
 - `/api/livro`: Necessário passar o Schema (Json/Dict) associado a Model Book. Caso já exista um livro com o mesmo título será retornado o valor False como erro.
