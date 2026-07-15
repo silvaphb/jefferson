@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from .entity import BookEntity
+from .entities import BookEntity
 
 class IBookRepository(ABC):
     @abstractmethod
@@ -12,6 +12,10 @@ class IBookRepository(ABC):
 
     @abstractmethod
     def verify_exists(self) -> bool:
+        ...
+
+    @abstractmethod
+    def find_by_id(self, id: int) -> BookEntity:
         ...
 
     @abstractmethod

@@ -1,5 +1,5 @@
 from .repositories import IBookRepository
-from .entity import BookEntity
+from .entities import BookEntity
 
 from typing import List
 
@@ -22,6 +22,13 @@ class BookRepository(IBookRepository):
     
     def verify_exists(self, title: str) -> bool:
         return Book.objects.filter(title=title).exists()
+    
+    def find_by_id(self, id: int) -> BookEntity | bool:
+       if Book.objects.filter(id=id).exists():
+           book = Book.objects.get(id=id)
+           return self._to_model(book)
+       
+       return False
 
     def get_unique(self, id: int) -> BookEntity | None:
         book = Book.objects.get(id=id)

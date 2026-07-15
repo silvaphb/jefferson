@@ -1,5 +1,6 @@
 from typing import Optional
 from ninja import Schema
+from .application.dtos import BookInDTO
 
 class BookIn(Schema):
     title: str
@@ -8,6 +9,16 @@ class BookIn(Schema):
     publication: str
     category: str
     stock: int
+
+    def to_dto(self) -> BookInDTO:
+        return BookInDTO(
+            title=self.title,
+            author=self.author,
+            description=self.description,
+            publication=self.publication,
+            category=self.category,
+            stock=self.stock
+        )
 
 class BookOut(Schema):
     id: int
