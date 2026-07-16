@@ -1,0 +1,5 @@
+# Django
+db.sqlite3
+
+# Py utils
+__pycache__/
