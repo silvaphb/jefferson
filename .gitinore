@@ -1,5 +1,7 @@
-# Django
-db.sqlite3
-
 # Py utils
 __pycache__/
+*.py[codz]
+*$py.class
+
+# Django
+db.sqlite3
