@@ -1,13 +1,14 @@
 from dataclasses import dataclass, field
-
+from uuid import UUID
+from datetime import date
 
 @dataclass
 class BookEntity:
-    id: int | None = field(default=None)
+    id: UUID | None = field(default=None)
     title: str = field(default='')
     author: str = field(default='')
     description: str = field(default='')
-    publication: str = field(default='')
+    publication: date = field(default='')
     category: str = field(default='')
     stock: int = field(default=0)
 

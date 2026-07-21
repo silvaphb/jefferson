@@ -1,6 +1,7 @@
 from app.library.domain.repositories import IBookRepository
 from app.library.domain.entities import BookEntity
 from app.library.application.dtos import BookInDTO, BookOutDTO, BookUpdateDTO
+from uuid import UUID
 
 
 class RegisterBookUseCase:
@@ -28,7 +29,7 @@ class ReturnBookUseCase:
     def __init__(self, book_repo: IBookRepository) -> None:
         self.book_repo = book_repo
 
-    def execute(self, id: int) -> BookOutDTO:
+    def execute(self, id: UUID) -> BookOutDTO:
             book = self.book_repo.find_by_id(id)
             if not book:
                 raise Exception('book don´t exists')
@@ -39,7 +40,7 @@ class DeleteBookUseCase:
     def __init__(self, book_repo: IBookRepository):
         self.book_repo = book_repo
 
-    def execute(self, id: int) -> bool:
+    def execute(self, id: UUID) -> bool:
         return self.book_repo.delete(id)
 
 
@@ -47,7 +48,7 @@ class UpdateBookUseCase:
     def __init__(self, book_repo: IBookRepository) -> None:
         self.book_repo = book_repo
 
-    def execute(self, id: int, dto: BookUpdateDTO) -> BookOutDTO:
+    def execute(self, id: UUID, dto: BookUpdateDTO) -> BookOutDTO:
         book = self.book_repo.find_by_id(id)
         if not book:
             raise Exception('book don´t exists')

@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional
-
+from uuid import UUID
+from datetime import date
 
 class BookInDTO(BaseModel):
     title: str
@@ -12,11 +13,11 @@ class BookInDTO(BaseModel):
 
 
 class BookOutDTO(BaseModel):
-    id: int
+    id: UUID
     title: str
     author: str
     description: str
-    publication: str
+    publication: date
     category: str
     stock: int
 
@@ -37,6 +38,6 @@ class BookUpdateDTO(BaseModel):
     title: Optional[str] = None
     author: Optional[str] = None
     description: Optional[str] = None
-    publication: Optional[str] = None
+    publication: Optional[date] = None
     category: Optional[str] = None
     stock: Optional[int] = None

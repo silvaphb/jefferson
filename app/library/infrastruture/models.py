@@ -1,9 +1,9 @@
 from django.db import models
+from uuid import uuid4
 
 # Create your models here.
 class Book(models.Model):
-    __tablename__ = 'Books'
-
+    id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     title = models.CharField(max_length=34)
     author = models.CharField(max_length=24)
     description = models.TextField(max_length=1024)
@@ -11,5 +11,5 @@ class Book(models.Model):
     category = models.CharField()
     stock = models.IntegerField()
 
-    def __str__(self):
-        return self.title
+    class Meta:
+        db_table = 'book'

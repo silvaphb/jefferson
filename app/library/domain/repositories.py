@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from app.library.domain.entities import BookEntity
+from uuid import UUID
 
 
 class IBookRepository(ABC):
@@ -12,7 +13,7 @@ class IBookRepository(ABC):
         ...
 
     @abstractmethod
-    def find_by_id(self, id: int) -> BookEntity:
+    def find_by_id(self, id: UUID) -> BookEntity:
         ...
 
     @abstractmethod
@@ -20,5 +21,5 @@ class IBookRepository(ABC):
         ...
 
     @abstractmethod
-    def delete(self, id: int) -> None:
+    def delete(self, id: UUID) -> None:
         ...
