@@ -1,5 +1,5 @@
 from ninja import NinjaAPI
-from library.api.views import api
+from app.library.api.views import api
 
 app = NinjaAPI(
     title='Bibliotech', description='Eficiencia na biblioteca escolar.'
